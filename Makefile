@@ -1,9 +1,9 @@
 
 
 run:
-	docker run --rm   --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v $$HOME/docker/volumes/postgres:/var/lib/postgresql/data  postgres
+	docker run -d --name postgres -v my_dbdata:/var/lib/postgresql/data -p 5432:5432 postgres:11
 
 kill:
-	docker kill pg-docker
+	docker kill postgres
 test:
 	psql -h localhost -U postgres -d postgres
